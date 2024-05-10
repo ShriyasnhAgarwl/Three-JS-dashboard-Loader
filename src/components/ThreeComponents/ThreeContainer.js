@@ -1,10 +1,10 @@
 import React, { useCallback, useContext ,useEffect, useRef , useState } from 'react';
-import AnnotationForm  from '../ThreeComponents/AnnotationForm';
+import AnnotationForm  from '../ThreeComponents/AnnotationForm';//not required
 import { setupScene } from '../../three/setupScene';
 import { loadModel } from '../../three/loadModel';
 import { setZoomBasedOnSlider } from '../../three/cameraUtil'; //not required
 import { getAnnotationById, onSaveAnnotation, getAnnotationData } from '../../js/annotation';//not required
-import InteractionHandler from '../../three/interactionHandler';
+import InteractionHandler from '../../three/interactionHandler';//not required
 import  AnnotationManager  from '../../three/annotationManager';//not required
 import { AnnotationContext } from '../../js/AnnotationContext';//not required
 import { toScreenPosition } from '../../js/projectionUtils'//not required
