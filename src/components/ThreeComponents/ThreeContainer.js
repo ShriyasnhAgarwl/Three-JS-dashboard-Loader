@@ -2,12 +2,12 @@ import React, { useCallback, useContext ,useEffect, useRef , useState } from 're
 import AnnotationForm  from '../ThreeComponents/AnnotationForm';
 import { setupScene } from '../../three/setupScene';
 import { loadModel } from '../../three/loadModel';
-import { setZoomBasedOnSlider } from '../../three/cameraUtil';
-import { getAnnotationById, onSaveAnnotation, getAnnotationData } from '../../js/annotation';
+import { setZoomBasedOnSlider } from '../../three/cameraUtil'; //not required
+import { getAnnotationById, onSaveAnnotation, getAnnotationData } from '../../js/annotation';//not required
 import InteractionHandler from '../../three/interactionHandler';
-import  AnnotationManager  from '../../three/annotationManager';
-import { AnnotationContext } from '../../js/AnnotationContext';
-import { toScreenPosition } from '../../js/projectionUtils'
+import  AnnotationManager  from '../../three/annotationManager';//not required
+import { AnnotationContext } from '../../js/AnnotationContext';//not required
+import { toScreenPosition } from '../../js/projectionUtils'//not required
 
 const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyManager, UpdateUndoRedoAvailability, threeComponentRef}) => {
   const mountRef = useRef(null);
