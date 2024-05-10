@@ -12,17 +12,17 @@ import { toScreenPosition } from '../../js/projectionUtils'//not required
 const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyManager, UpdateUndoRedoAvailability, threeComponentRef}) => {
   const mountRef = useRef(null);
   const [initialized, setInitialized] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [selectedPoint, setSelectedPoint] = useState(null);
-  const [AnnotationPosition, setPosition] = useState(null);
-  const [annotationData, setAnnotationData] = useState(null);
+  const [showForm, setShowForm] = useState(false);//not required
+  const [selectedPoint, setSelectedPoint] = useState(null);//not required
+  const [AnnotationPosition, setPosition] = useState(null);//not required
+  const [annotationData, setAnnotationData] = useState(null);//not required
   const [threeObjects, setThreeObjects] = useState({ scene: null, camera: null, renderer: null, controls: null });
-  const { annotations ,setAnnotations } = useContext(AnnotationContext);
+  const { annotations ,setAnnotations } = useContext(AnnotationContext);//not required
   
-  const [annotationPositions, setAnnotationPositions] = useState({});
+  const [annotationPositions, setAnnotationPositions] = useState({});//not required
 
   // Add a function to update annotation positions
-  const updateAnnotationPositions = useCallback(() => {
+  const updateAnnotationPositions = useCallback(() => {   //not required
     const newPositions = {};
     
     annotations.forEach(annotation => {
@@ -38,7 +38,7 @@ const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyMa
   }, []);
 
 
-  const handlePointClick = (point, position, isNewPoint) => {
+  const handlePointClick = (point, position, isNewPoint) => { //not required
     
       setSelectedPoint(point);
       setPosition(position);
@@ -56,7 +56,7 @@ const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyMa
     
   };
 
-  const handleSaveAnnotation = async ( id ) => {    
+  const handleSaveAnnotation = async ( id ) => {    //not required
     const annotationWithPosition = {
         ...id, 
         position: AnnotationPosition 
@@ -69,11 +69,11 @@ const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyMa
     setPosition(null);   
   };
 
-  const handleEditPoint = (EditID) =>{
+  const handleEditPoint = (EditID) =>{ //not required
     interactionHandlerRef.current.editActivePoint(EditID);
   }
 
-  const handleDeletePoint = (deleteID) =>{
+  const handleDeletePoint = (deleteID) =>{ //not required
     setShowForm(false);
     interactionHandlerRef.current.deleteActivePoint(deleteID);
   }
@@ -92,20 +92,20 @@ const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyMa
                                                                 handlePointClick,
                                                                 historyManager,
                                                                 UpdateUndoRedoAvailability,
-                                                                setAnnotations);
+                                                                setAnnotations); //not required
                                                                 
-          getAnnotationData(productId, interactionHandlerRef.current);
+          getAnnotationData(productId, interactionHandlerRef.current);//not required
                                                               });
         setInitialized(true);
         
-        threeComponentRef.current = (newZoomLevel) =>{
+        threeComponentRef.current = (newZoomLevel) =>{//not required
           setZoomBasedOnSlider(newZoomLevel, scene, camera, controls);
         };
         
         const animate = () => {
           requestAnimationFrame(animate);
           renderer.render(scene, camera);
-          updateAnnotationPositions();
+          updateAnnotationPositions();//not required
           camera.updateProjectionMatrix();
           controls.update();
         };
@@ -119,7 +119,7 @@ const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyMa
           camera.aspect = width / height;
           camera.updateProjectionMatrix();
           controls.update();       
-          updateAnnotationPositions();
+          updateAnnotationPositions();//not required
         };
         
         window.addEventListener('resize', onWindowResize, false);
@@ -129,7 +129,7 @@ const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyMa
     // Cleanup function to remove the renderer from the DOM and clear event listeners
     return () => {           
         if (mountRef.current && mountRef.current.contains(renderer.domElement)) {
-          mountRef.current.removeChild(renderer.domElement);
+          mountRef.current.removeChild(renderer.complement);
         }
         window.removeEventListener('resize',onWindowResize, false);
         
@@ -137,7 +137,7 @@ const ThreeContainer = ({ modelPath, productId, interactionHandlerRef, historyMa
     }, [modelPath, productId, interactionHandlerRef]); // modelPath, productId, interactionHandlerRef
 
   return <div ref={mountRef} children class="box-content" style={{ width: '800px', height: '800px', position:'relative', overflow :'hidden'}}>
-    { initialized &&  (
+    { initialized &&  ( //not required
         <>   
         {(interactionHandlerRef.current &&        
           <AnnotationManager  camera = {threeObjects.camera}
